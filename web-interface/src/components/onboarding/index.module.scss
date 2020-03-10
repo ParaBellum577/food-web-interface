@@ -1,5 +1,8 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
 
+.modal {
+    display: flex;
+}
 .headerModal {
     >img {
         margin-left: 93%;
@@ -8,14 +11,7 @@
         cursor: pointer;
     }
 }
-.signInWsGoogle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 240px;
-    margin: 0 auto;
-}
+
 .modalLeft {
     width: 25%;
     min-height: 900px;
@@ -24,27 +20,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    .imgIntegrations {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        >img {
-            max-width: 100%;
-
-            &:first-child {
-                position: relative;
-                z-index: 100000;
-                top: -66px;
-            }
-
-            &:nth-child(2) {
-                margin-top: -187px;
-            }
-        }
-    }
 }
 
 .errorBlock {
@@ -106,29 +81,11 @@
     align-items: center;
 
     >div {
-       &:last-child {
-        padding-top: 50px;
-       }
-        >h4 {
-            margin-top: 30px;
-            font-weight: bold;
-            font-size: 36px;
-            font-family: 'Open Sans', sans-serif;
-            color: #000000;
-            margin-bottom: 24px;
-        }
-
         >div {
             .form {
                 display: flex;
-                flex-direction: column;
                 align-items: center;
-
                 .formGroup {
-                    display: flex;
-                    flex-direction: column;
-                    position: relative;
-
                     >input {
                         border-radius: 4px;
                         border: 1px solid #b1b9c4;
@@ -138,6 +95,7 @@
                         padding-right: 60px;
                         text-align: left;
                         height: 48px;
+                        margin-right: 20px;
                         font-size: 16px;
                         font-family: 'Open Sans', sans-serif;
                         color: #b1b9c4;
@@ -166,10 +124,8 @@
                 }
 
                 >button {
-                    margin-top: 32px;
-                    margin-bottom: 52px;
-                    height: 64px;
-                    width: 444px;
+                    height: 48px;
+                    width: 176px;
                 }
             }
         }
@@ -200,27 +156,22 @@
         background: #dededf;
     }
 }
-.tip {
-    position: relative;
-    margin-left: 50px;
-   > div {
-    height: 40px;
-    width: 252px;
-    background-color: #ff5e7a;
-    border-radius: 4px;
-    font-family: Montserrat, sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: #ffffff;
+.buttons {
     display: flex;
-    align-items: center;
-    justify-content: center;
-   }
-   > img {
-       position: absolute;
-       left: 120px;
-   }
-}
+    margin-bottom: 100px;
+    > div {
+        border-radius: 8px;
+        width: 238px;
+        height: 238px;
+        margin-right: 100px;
+        background: #E4F2FD;
+        box-shadow: -5px 3px 9px 0 rgba(0,0,0,.15);
+        &:hover {
+            cursor: pointer;
+
+        }
+    }
+  } 
 .errorBlock {
    display: flex;
    align-items: flex-start;
@@ -262,10 +213,11 @@
     background: rgba(160, 171, 186, 0.822);
     transition: all 0.4s ease-in-out;
     &:hover {
-     background: #1991eb;
+     background: #5EC4DD;
     }
     > img {
         filter: contrast(400%);
+        margin: 0;
     }
     >span {
         font-size: 8px;
@@ -389,130 +341,3 @@
     }
   } 
 
-  @media screen and (max-width: 1060px) {
-
-    .list {
-        >div {
-            >span {
-                font-size: 8px;
-            }
-        }
-    }
-  } 
-
-@media screen and (max-width: 980px) {
-    .modalLeft {
-        display: none;
-    }
-
-    .modalRight {
-        width: 100%;
-        height: 700px;
-        > div:last-child {
-            padding-top: 0;
-        }
-    }
-}
-@media screen and (max-width: 600px) {
-
-    .modalRight {
-        width: 100%;
-        > .form {
-            width: 90%;
-            margin: 0 auto;
-        }
-    }
-    .formGroup {
-        width: 100%;
-        margin: 0 auto;
-        > span {
-            width: 80% !important;
-            margin: 0 auto;
-        }
-        > input {
-            width: 74% !important;
-            margin: 0 auto;
-        }
-    }
-    .line {
-        > div {
-            width: 90%;
-            margin: 0 auto;
-        }
-    }
-    .hidePsw {
-        right: 13%;
-    }
-    .trackers {
-        flex-wrap: wrap;
-        justify-content: center;
-        margin: 20px auto;
-        width: 80%;
-        > div {
-            margin-bottom: 10px;
-        }
-    }
-    .form {
-        > button {
-            height: 58px !important;
-            width: 308px !important;
-        }
-    }
-    label:before,
-    label:after {
-        top: -2px !important;
-        left: 24px !important;
-    }
-    .closeModal {
-        right: 32px;
-    }
-    .checkbox {
-        > label {
-            > div {
-                width: 70%;
-                margin: 0 auto;
-            }
-        }
-    }
-}
-@media screen and (max-width: 460px) { 
-    .closeModal {
-        right: 18px;
-        top: 14px;
-        z-index: 8888;
-    }
-    .modalRight {
-        > div:last-child {
-            margin-top: -118px;
-            padding-top: 0;
-        }
-        > div {
-            > h4 {
-                font-size: 30px;
-            }
-        }
-    }
-}
-@media screen and (max-width: 372px) {
-
-    .closeModal {
-        display: none;
-    }
-    .modalRight {
-        padding-top: 90px;
-    }
-}
-
-@media screen and (max-width: 342px) {
-
-    .form {
-        > button {
-            width: 260px !important;
-    }
-  }
-  .trackers {
-      > div {
-        width: 110px;
-      }
-  }
-}

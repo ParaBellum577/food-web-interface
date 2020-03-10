@@ -1,0 +1,131 @@
+$white-text: #fff;
+$button-primary: #5EC4DD;
+$button-active-opacity: rgba(25, 145, 235, 0.12);
+$button-primary-hov: #94dcee;
+$blue-button: #f2f9ff;
+// $button-primary: rgba(116, 202, 2, 1);
+// $button-primary-hov: rgba(125, 217, 3, 1);
+
+.buttonSignUpBig {
+    width: 440px;
+    transition: all .2s ease-out;
+    height: 72px;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    color: $white-text;
+    border: none;
+    border-radius: 4px;
+    background-color: $button-primary;
+    &:hover {
+        transform: translateY(-4px);
+        position: relative;
+        color: $white-text;
+        box-shadow: 0px 21px 43px -10px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+        transform: translateY(0px);
+        outline: none;
+    }
+}
+.buttonSignUp {
+    width: 176px;
+    height: 53px;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    color: $white-text;
+    border: none;
+    border-radius: 4px;
+    background-color: $button-primary;
+
+    &:hover {
+        background-color: $button-primary-hov;
+    }
+
+    &:active {
+        background-color: $button-primary;
+        outline: none;
+    }
+}
+
+
+.buttonSignIn {
+    width: 120px;
+    margin-right: 12px;
+    height: 45px;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    color: $button-primary;
+    border: 2px solid $button-primary;
+    border-radius: 4px;
+    background-color: $white-text;
+    outline: none;
+
+    &:hover {
+        background-color: $blue-button;
+    }
+
+    &:active {
+        background-color: $button-active-opacity;
+    }
+}
+
+.learnMore {
+    width: 320px;
+    height: 64px;
+    font-weight: 600;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    color: $button-primary;
+    border: 2px solid $button-primary;
+    border-radius: 4px;
+    background-color: $white-text;
+
+    &:hover {
+        background-color: $blue-button;
+    }
+
+    &:active {
+        background-color: $button-active-opacity;
+        outline: none;
+    }
+}
+
+.buttonFeatures {
+    width: 320px;
+    margin-top: 88px;
+    margin-right: 12px;
+    height: 64px;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    color: $button-primary;
+    border: 2px solid $button-primary;
+    border-radius: 4px;
+    background-color: $blue-button;
+
+    &:hover {
+        background-color: $blue-button;
+    }
+
+    &:active {
+        background-color: $button-active-opacity;
+        outline: none;
+
+    }
+}
+
+@media screen and (max-width: 480px) {
+        .learnMore{
+            height: 45px;
+            width: 200px;
+    }
+    .buttonSignUp, .buttonSignUpBig, .buttonFeatures {
+        height: 60px;
+        width: 270px;
+    }
+}
