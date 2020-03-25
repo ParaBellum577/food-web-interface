@@ -21,7 +21,11 @@
     align-items: center;
     justify-content: center;
 }
-
+.formGroupSecond {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .errorBlock {
     >img {
         width: 18px;
@@ -182,23 +186,7 @@
     font-family: 'Open Sans', sans-serif;
     display: none;
 }
-.li {
-    &:first-child {
-        margin-top: 10px;
-    }
-    list-style: none;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    >img {
-        width: 10%;
-        margin-right: 10px;
-    }
-}
+
 .closeModal {
     width: 52px;
     right: 88px;
@@ -226,103 +214,6 @@
     }
 }
 
-.trackers {
-    display: flex;
-    margin-top: 24px;
-    margin-bottom: 24px;
-    justify-content: center;
-
-    >div {
-        cursor: pointer;
-        width: 70px;
-        margin-right: 12px;
-        justify-content: center;
-        height: 48px;
-        display: flex;
-        border: 1px solid #e3e4e6;
-        border-radius: 4px;
-        background-color: #ffffff;
-        align-items: center;
-        &:last-child {
-            margin-right: 0;
-        }
-        &:hover {
-            background: #f1f2f3;
-        }
-
-        >a, >a:hover, >a:visited{
-            text-decoration: none;
-            color: #6b7c93;
-            >span {
-                margin-left: 11px;
-            }
-        }
-    }
-}
-
-.checkbox {
-    margin-top: 16px;
-
-    label {
-        position: relative;
-        font-size: 14px;
-        font-weight: 500;
-        font-family: 'Open Sans', sans-serif;
-        cursor: pointer;
-
-        >div {
-            margin-left: 16px;
-            margin-top: 4px;
-
-            >span, a {
-                text-decoration: none;
-                font-size: 14px;
-                font-weight: 500;
-                color: #1991eb;
-                font-family: 'Open Sans', sans-serif;
-
-                &:hover {
-                    border-bottom: 1px solid #1991eb;
-                }
-            }
-        }
-    }
-
-    label:before,
-    label:after {
-        position: absolute;
-        top: 0;
-        left: -10px;
-        font-size: 21px;
-        font-family: FontAwesome;
-
-    }
-
-    label:before {
-        content: '\f096';
-    }
-
-    label:after {
-        max-width: 0;
-        overflow: hidden;
-        content: '\f046';
-        opacity: .5;
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        -o-transition: all 0.3s;
-        transition: all 0.3s;
-        color: #1991eb;
-    }
-
-    input[type="checkbox"] {
-        display: none;
-    }
-
-    input[type="checkbox"]:checked+label:after {
-        max-width: 25px;
-        opacity: 1;
-    }
-}
 
 @media screen and (max-width: 1500px) {
     .imgIntegrations {
