@@ -7,7 +7,9 @@ import uuid from 'uuid';
 import styles from './index.module.scss';
 import acceptIcon from '../style/img/accept.svg'
 import rejectIcon from '../style/img/reject.svg'
-
+import iconCheck from '../style/img/Icon_green.svg';
+import dish from '../style/img/Imgs/dish.svg';
+import restaurant from '../style/img/Imgs/restaurant.svg';
 
 export default function Onboarding() {
     const [userSettings, setUserSettings] = useState({});
@@ -26,7 +28,6 @@ export default function Onboarding() {
         setNextStep(newStep);
     }
     
-    console.log("Onboarding -> userSettings", userSettings)
     const accept = (
         <img src={acceptIcon} alt="accept" />
     )
@@ -41,6 +42,9 @@ export default function Onboarding() {
                     <FirstStep
                     handleChangeStep={handleChangeStep}
                     addUserData={addUserData}
+                    iconCheck={iconCheck}
+                    dish={dish}
+                    restaurant={restaurant}
                     />
                 ) : null
             }
@@ -48,6 +52,8 @@ export default function Onboarding() {
                 step === 2 ? (
                     <SecondStep
                     handleChangeStep={handleChangeStep}
+                    iconCheck={iconCheck}
+                    userSettings={userSettings}
                     />
                 ) : null
             }

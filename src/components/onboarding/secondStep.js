@@ -12,20 +12,47 @@ import showPassword from '../style/img/Icon_show_password.svg';
 import icon from '../style/img/Icon_green.svg';
 import acceptIcon from '../style/img/accept.svg'
 import rejectIcon from '../style/img/reject.svg'
-const API_URL ='https://api.duefocus.com/user/rpc';
 
-export default function SecondStep ({ handleChangeStep }) {
+import cup from '../style/img/Imgs/cup.svg';
+import restaurantIcon from '../style/img/Imgs/restaurant.svg';
+import fastFood from '../style/img/Imgs/fast-food.svg';
+
+
+export default function SecondStep ({ handleChangeStep, iconCheck, userSettings }) {
   const [step, setNextStep] = useState(1);
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [organizationName, setOrganizationName] = useState('');
+  const [name, setName] = useState('');
+  const [organization, setOrganization] = useState('');
 
-  const handleUserInput = (e) => {
-    setEmail(e.target.value);
+
+  const handleSetName = (e) => {
+    setName(e.target.value);
   }
 
-  const handleSubmit = () => {
+  const handleSetOrgName = (e) => {
+    setOrganizationName(e.target.value);
+  }  
+  
+  const handleSetPassword = (e) => {
+    setPassword(e.target.value);
+  }
+  
+  const handleSetOrganization = (name) => {
+    setOrganization(name);
+  }
 
+  const handleSubmit = (e) => {
+  e.preventDefault();
+  const data = {
+      name: name,
+      email: userSettings.email,
+      password: password,
+      organization: organization,
+      organizationName: organizationName,
+      isOwner: userSettings.isOwner
+    }
+    console.log("handleSubmit -> data", data)
   }
 
   const accept = (
@@ -49,47 +76,90 @@ export default function SecondStep ({ handleChangeStep }) {
         <div className={styles.modalRight}>
           <div className={styles.closeModal} onClick={() => handleChangeStep(1)}><img src={close} alt="close"/></div>
             <div>
-              <div>
+              <div className={styles.secondForm}>
+                <h1 className={styles.title}>Привет, сейчас настроим все для под тебя</h1>
                <form onSubmit={() => console.log('submit')} className={styles.form}>
-                  <div className={`${styles.formGroupSecond} ${styles.formGroup}`}>
+                  <div className={`${styles.formGroupSecond}`}>
+                    <div className={`${styles.formGroup} ${styles.flexInputs}`}>
+                    <span>Имя</span>
                     <input
                       autoFocus
                       maxLength='76'
                       id='correct-mail'
-                    //   value={this.state.email}
-                    //   onChange={this.handleUserInput}
+                      value={name}
+                      onChange={handleSetName}
                       type="text"
                       name="name"
                       placeholder='Введите своё имя...'
-                    />                    
+                    />
+                    </div>
+                    <div className={`${styles.formGroup} ${styles.flexInputs}`}>
+                    <span>Пароль</span>
                     <input
                     autoFocus
                     maxLength='76'
                     id='correct-mail'
-                  //   value={this.state.email}
-                  //   onChange={this.handleUserInput}
+                    value={password}
+                    onChange={handleSetPassword}
                     type="password"
                     name="password"
                     placeholder='Введите пароль'
                   />
+                  </div>
+                  <div className={`${styles.formGroup} ${styles.flexInputs}`}>
+                  <span>как называется твой бренд или организация?</span>
                   <input
                     autoFocus
                     maxLength='76'
                     id='correct-mail'
-                  //   value={this.state.email}
-                  //   onChange={this.handleUserInput}
-                    type="password"
-                    name="password"
+                    value={organizationName}
+                    onChange={handleSetOrgName}
+                    type="text"
+                    name="Brand name"
                     placeholder='Название бренда'
                   />
                   </div>
+                  <h2 className={styles.secondTitle}>Выбери, чем ты управляешь?</h2>
+                  <div className={`${styles.buttons} ${styles.trioButtons}`}>
+                    <div onClick={() => handleSetOrganization('coffeShop')} className={organization === 'coffeShop' ? 'element-selected' : ''}>
+                      <div className={styles.check}>
+                        {
+                        organization === 'coffeShop' &&
+                        <img src={iconCheck} alt="check"/>
+                        }
+                      </div>
+                    <img src={cup} alt="cup"/>
+                      <span>Кофешоп</span>
+                    </div>
+                    <div onClick={() => handleSetOrganization('fastFood')} className={organization === 'fastFood' ? 'element-selected' : ''}>
+                    <div className={styles.check}>
+                        {
+                          organization === 'fastFood' &&
+                          <img src={iconCheck} alt="check"/>
+                        }
+                    </div>
+                    <img src={fastFood} alt="fast food"/>
+                      <span>Фастфуд</span>
+                    </div>
+                    <div onClick={() => handleSetOrganization('restaurant')} className={organization === 'restaurant' ? 'element-selected' : ''}>
+                    <div className={styles.check}>
+                        {
+                          organization === 'restaurant' &&
+                          <img src={iconCheck} alt="check"/>
+                        }
+                    </div>
+                    <img src={restaurantIcon} alt="restaurant"/>
+                      <span>Ресторан</span>
+                    </div>
+                  </div>
                     <button
-                    //   disabled={!this.state.formValid}
-                    //   className={button.buttonSignUp}
-                    //   onClick={this.handleSubmit}
+                      // disabled={!this.state.formValid}
+                      className={button.buttonSignUp}
+                      onClick={handleSubmit}
                     >
                       Далі
                     </button>
+                  </div>
                </form>
               </div>
             </div>

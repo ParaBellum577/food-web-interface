@@ -7,10 +7,14 @@ import close from '../style/img/Icon_X_gray.svg';
 import hidePassword from '../style/img/Icon_hide_password.svg';
 import showPassword from '../style/img/Icon_show_password.svg';
 
+
+
+
+
 import acceptIcon from '../style/img/accept.svg'
 import rejectIcon from '../style/img/reject.svg'
 
-export default function FirstStep ({ handleChangeStep, addUserData }) {
+export default function FirstStep ({ handleChangeStep, addUserData, iconCheck, dish, restaurant }) {
   const [email, setEmail] = useState('');
   const [isOwner, setIsOwner] = useState();
   const [isFormValid, setIsFormValid] = useState(false);
@@ -64,13 +68,15 @@ export default function FirstStep ({ handleChangeStep, addUserData }) {
               <div>
                 <div>
                   <div className={styles.buttons}>
-                    <div onClick={() => setIsOwner(false)}>
-                      <img src="" alt=""/>
+                    <div className={isOwner === false ? 'element-selected' : ''} onClick={() => setIsOwner(false)}>
+                      <div className={styles.check}>{isOwner === false && <img src={iconCheck} alt="check"/>}</div>
+                    <img src={dish} alt="dish"/>
                       <span>Хочу їсти</span>
                       <p>клієнт</p>
                     </div>
-                    <div onClick={() => setIsOwner(true)}>
-                      <img src="" alt=""/>
+                    <div className={isOwner ? 'element-selected' : ''} onClick={() => setIsOwner(true)}>
+                      <div className={styles.check}>{isOwner && <img src={iconCheck} alt="check"/>}</div>
+                    <img src={restaurant} alt="restaurant"/>
                       <span>Смачно Готую</span>
                       <p>керую рестораном</p>
                     </div>
