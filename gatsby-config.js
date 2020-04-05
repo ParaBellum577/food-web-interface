@@ -5,6 +5,19 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-react-redux`,
+      options: {
+        pathToCreateStoreModule: './src/store',
+        serialize: {
+          space: 0,
+          isJSON: true,
+          unsafe: false,
+        },
+        cleanupOnClient: true,
+        windowKey: '__PRELOADED_STATE__',
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -25,11 +38,8 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/ice-cream-cone-4-16-297687.png`, // This path is relative to the root of the site.
+        icon: `src/images/ice-cream-cone-4-16-297687.png`,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

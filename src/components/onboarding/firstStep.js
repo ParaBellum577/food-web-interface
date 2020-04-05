@@ -2,19 +2,20 @@ import React,{ useEffect, useState } from 'react';
 // import { UncontrolledPopover, PopoverBody } from 'reactstrap';
 import styles from './index.module.scss';
 import button from '../buttons.module.scss';
-
+import { connect } from 'react-redux'
 // import close from '../style/img/Icon_X_gray.svg';
 // import hidePassword from '../style/img/Icon_hide_password.svg';
 // import showPassword from '../style/img/Icon_show_password.svg';
 
-
-
-
-
 import acceptIcon from '../style/img/accept.svg'
 import rejectIcon from '../style/img/reject.svg'
 
-export default function FirstStep ({ handleChangeStep, addUserData, iconCheck, dish, restaurant }) {
+const mapStateToProps = ({ user, dashboard }) => ({
+  user,
+  dashboard
+});
+
+const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, restaurant }) {
   const [email, setEmail] = useState('');
   const [isOwner, setIsOwner] = useState();
   const [isFormValid, setIsFormValid] = useState(false);
@@ -114,3 +115,5 @@ export default function FirstStep ({ handleChangeStep, addUserData, iconCheck, d
       </>
     )
 }
+
+export default connect(mapStateToProps)(FirstStep)
