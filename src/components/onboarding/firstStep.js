@@ -1,11 +1,11 @@
 import React,{ useEffect, useState } from 'react';
-import { UncontrolledPopover, PopoverBody } from 'reactstrap';
+// import { UncontrolledPopover, PopoverBody } from 'reactstrap';
 import styles from './index.module.scss';
 import button from '../buttons.module.scss';
 
-import close from '../style/img/Icon_X_gray.svg';
-import hidePassword from '../style/img/Icon_hide_password.svg';
-import showPassword from '../style/img/Icon_show_password.svg';
+// import close from '../style/img/Icon_X_gray.svg';
+// import hidePassword from '../style/img/Icon_hide_password.svg';
+// import showPassword from '../style/img/Icon_show_password.svg';
 
 
 

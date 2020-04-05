@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import FirstStep from './firstStep';
 import SecondStep from './secondStep';
-import uuid from 'uuid';
+// import uuid from 'uuid';
 // import axios from 'axios'
 
-import styles from './index.module.scss';
+// import styles from './index.module.scss';
 import acceptIcon from '../style/img/accept.svg'
 import rejectIcon from '../style/img/reject.svg'
 import iconCheck from '../style/img/Icon_green.svg';
