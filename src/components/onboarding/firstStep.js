@@ -1,8 +1,7 @@
-import React,{ useEffect, useState } from 'react';
+import React,{ useEffect, useState, memo } from 'react';
 // import { UncontrolledPopover, PopoverBody } from 'reactstrap';
 import styles from './index.module.scss';
 import button from '../buttons.module.scss';
-import { connect } from 'react-redux'
 // import close from '../style/img/Icon_X_gray.svg';
 // import hidePassword from '../style/img/Icon_hide_password.svg';
 // import showPassword from '../style/img/Icon_show_password.svg';
@@ -10,10 +9,6 @@ import { connect } from 'react-redux'
 import acceptIcon from '../style/img/accept.svg'
 import rejectIcon from '../style/img/reject.svg'
 
-const mapStateToProps = ({ user, dashboard }) => ({
-  user,
-  dashboard
-});
 
 const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, restaurant }) {
   const [email, setEmail] = useState('');
@@ -116,4 +111,4 @@ const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, re
     )
 }
 
-export default connect(mapStateToProps)(FirstStep)
+export default memo(FirstStep);

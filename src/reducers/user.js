@@ -1,9 +1,18 @@
+import { SET_USER_INFO } from '../actions/types';
+ 
 const initialState = {
-    name: 'ananas',
-    age: 23,
-    sex: 'male'
+  users: [],
+};
+ 
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case SET_USER_INFO:
+      return {
+        ...state,
+        users: action.payload,
+      };
+    default:
+      return state;
   }
+};
   
-  export default function user(state = initialState) {
-    return state
-  }

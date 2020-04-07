@@ -1,23 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
+import _ from 'lodash';
+import { connect } from 'react-redux'
+import { setUserInfo } from '../../actions/user'
 import FirstStep from './firstStep';
 import SecondStep from './secondStep';
-// import uuid from 'uuid';
-// import axios from 'axios'
 
-// import styles from './index.module.scss';
 import acceptIcon from '../style/img/accept.svg'
 import rejectIcon from '../style/img/reject.svg'
 import iconCheck from '../style/img/Icon_green.svg';
 import dish from '../style/img/Imgs/dish.svg';
 import restaurant from '../style/img/Imgs/restaurant.svg';
 
-export default function Onboarding() {
+const mapStateToProps = ({ user, dashboard }) => ({
+    user,
+    dashboard
+  });
+  
+const actions = { setUserInfo };
+
+const Onboarding = ({ setUserInfo, dashboard, user }) => {
     const [userSettings, setUserSettings] = useState({});
     const [step, setNextStep] = useState(1);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isEmailValid, setIsEmailValid] = useState(false);
     
+    const getData = async () => {
+        if(_.isEmpty(user.users)) {
+            await setUserInfo();
+            console.log('user', user)
+            console.log('dashboard', dashboard);
+        }
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
+
     const handleUserInput = (e) => {
         setEmail(e.target.value);
     }
@@ -60,3 +79,5 @@ export default function Onboarding() {
         </>
     )
 }
+
+export default memo(connect( mapStateToProps,actions)(Onboarding));
