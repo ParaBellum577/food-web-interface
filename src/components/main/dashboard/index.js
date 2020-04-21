@@ -8,8 +8,10 @@ const Dashboard = function ({ }) {
 
   return(
       <>
-      <Header />
       <SideBar />
+      <div id="main">
+        <Header />
+      </div>
       </>
     )
 }
