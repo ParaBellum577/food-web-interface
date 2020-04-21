@@ -1,0 +1,25 @@
+.sideBar {
+    position: fixed;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    z-index: 10000;
+    border-right: 1px solid #dde1e7;
+    min-height: 100vh;
+    .sideBarElement {
+        display: flex;
+        padding: 12px 5px 12px 50px;
+        color: #4d4d4d;
+        font-size: 14px;
+        line-height: 23px;
+        border-radius: 4px;
+        position: relative;
+        font-weight: 500;
+        height: 36px;
+        outline: none;
+        overflow: hidden;
+        white-space: nowrap;
+        -ms-text-overflow: clip;
+        text-overflow: clip;
+    }
+}

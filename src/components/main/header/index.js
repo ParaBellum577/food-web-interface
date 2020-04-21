@@ -3,9 +3,9 @@ import React from "react";
 // import DropDownIntegration from './Features'
 // import Pricing from './Pricing'
 import styles from "./style.module.scss";
-import button from '../buttons.module.scss'
+import button from '../../../components//buttons.module.scss';
 
-import logo from "../style/img/images.png";
+import logo from "../../style/img/Imgs/dish.svg";
 
 
 export default class Header extends React.Component {

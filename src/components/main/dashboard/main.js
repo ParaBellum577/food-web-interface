@@ -9,7 +9,6 @@ const Dashboard = function ({ }) {
   return(
       <>
       <Header />
-      <SideBar />
       </>
     )
 }
