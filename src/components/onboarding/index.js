@@ -1,7 +1,7 @@
 import React, { useEffect, useState, memo } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux'
-import { setUserInfo } from '../../actions/user'
+import { getUserInfo, setUserInfo } from '../../actions/user'
 import FirstStep from './firstStep';
 import SecondStep from './secondStep';
 
@@ -14,11 +14,11 @@ import restaurant from '../style/img/Imgs/restaurant.svg';
 const mapStateToProps = ({ user, dashboard }) => ({
     user,
     dashboard
-  });
+});
   
-const actions = { setUserInfo };
+const actions = { getUserInfo, setUserInfo };
 
-const Onboarding = ({ setUserInfo, dashboard, user }) => {
+const Onboarding = ({ getUserInfo, setUserInfo, user }) => {
     const [userSettings, setUserSettings] = useState({});
     const [step, setNextStep] = useState(1);
     const [email, setEmail] = useState('');
@@ -27,10 +27,10 @@ const Onboarding = ({ setUserInfo, dashboard, user }) => {
     
     const getData = async () => {
         if(_.isEmpty(user.users)) {
-            await setUserInfo();
+            await getUserInfo();
+            setUserInfo(userSettings);
             console.log('user', user)
-            console.log('dashboard', dashboard);
-        }
+            }
     }
 
     useEffect(() => {
@@ -80,4 +80,4 @@ const Onboarding = ({ setUserInfo, dashboard, user }) => {
     )
 }
 
-export default memo(connect( mapStateToProps,actions)(Onboarding));
+export default memo(connect(mapStateToProps,actions)(Onboarding));

@@ -1,10 +1,10 @@
-import React,{ useState } from 'react';
-// import { UncontrolledPopover, PopoverBody } from 'reactstrap';
+import React, { useEffect, useState, memo } from 'react';
+import { connect } from 'react-redux'
+import { setUserInfo } from '../../actions/user';
 import styles from './index.module.scss';
 import button from '../buttons.module.scss';
-// import { Link } from 'gatsby';
-// import uuid from 'uuid';
-// import axios from 'axios'
+import { Link } from 'gatsby';
+
 
 import close from '../style/img/Icon_X_gray.svg';
 // import hidePassword from '../style/img/Icon_hide_password.svg';
@@ -17,8 +17,9 @@ import cup from '../style/img/Imgs/cup.svg';
 import restaurantIcon from '../style/img/Imgs/restaurant.svg';
 import fastFood from '../style/img/Imgs/fast-food.svg';
 
+const actions = { setUserInfo };
 
-export default function SecondStep ({ handleChangeStep, iconCheck, userSettings }) {
+const SecondStep = function({ handleChangeStep,user, setUserInfo, iconCheck, userSettings }) {
   // const [step, setNextStep] = useState(1);
   const [password, setPassword] = useState('');
   const [organizationName, setOrganizationName] = useState('');
@@ -45,22 +46,16 @@ export default function SecondStep ({ handleChangeStep, iconCheck, userSettings 
   const handleSubmit = (e) => {
   e.preventDefault();
   const data = {
-      name: name,
-      email: userSettings.email,
-      password: password,
-      organization: organization,
-      organizationName: organizationName,
-      isOwner: userSettings.isOwner
-    }
-    console.log("handleSubmit -> data", data)
+    name: name,
+    email: userSettings.email,
+    password: password,
+    organization: organization,
+    organizationName: organizationName,
+    isOwner: userSettings.isOwner
   }
-
-  // const accept = (
-  //   <img src={acceptIcon} alt="accept"/>
-  // )
-  // const reject = (
-  //   <img src={rejectIcon} alt="reject"/>
-  // )
+    setUserInfo(data);
+    window.location.href = '/';
+  }
 
   return(
       <>
@@ -168,3 +163,5 @@ export default function SecondStep ({ handleChangeStep, iconCheck, userSettings 
       </>
     )
 }
+
+export default memo(connect(null,actions)(SecondStep));

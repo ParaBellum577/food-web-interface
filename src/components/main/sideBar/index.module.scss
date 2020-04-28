@@ -7,6 +7,14 @@
     z-index: 10000;
     border-right: 1px solid #dde1e7;
     min-height: 100vh;
+    background: #fff;
+    .headerLogo {
+        position: fixed;
+        top: 0;
+        padding: 20px;
+        width: 100px;
+        height: 100px;
+    }
     .sideBarElement {
         text-decoration: none;
         color: #4d4d4d;

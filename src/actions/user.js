@@ -1,10 +1,10 @@
 import axios from 'axios';
 import _ from 'lodash';
 
-import { SET_USER_INFO } from './types';
+import { SET_USER_INFO, GET_USER_INFO } from './types';
 
 
-export const setUserInfo = () => async dispatch => {
+export const getUserInfo = () => async dispatch => {
   try {
   const res = await axios({
         method: 'GET',
@@ -16,8 +16,19 @@ export const setUserInfo = () => async dispatch => {
         },
   });
   dispatch({ 
-      type: SET_USER_INFO, 
+      type: GET_USER_INFO, 
       payload: res 
+  });
+  } catch (error) {
+    console.log('getUserInfo error:', error);
+  }
+};
+
+export const setUserInfo = data => async dispatch => {
+  try {
+  dispatch({ 
+      type: SET_USER_INFO, 
+      payload: data
   });
   } catch (error) {
     console.log('setUserInfo error:', error);
