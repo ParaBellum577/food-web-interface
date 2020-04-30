@@ -51,10 +51,12 @@ const SecondStep = function({ handleChangeStep,user, setUserInfo, iconCheck, use
     password: password,
     organization: organization,
     organizationName: organizationName,
-    isOwner: userSettings.isOwner
+    isOwner: userSettings.isOwner,
   }
     setUserInfo(data);
-    window.location.href = '/';
+    localStorage.setItem('user', JSON.stringify(data));
+    localStorage.setItem('userConfirmed', true);
+    window.location.href = '/dashboard';
   }
 
   return(

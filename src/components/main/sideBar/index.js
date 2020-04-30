@@ -10,13 +10,19 @@ const NavBar = function ({ }) {
   return(
       <>
       <div className={styles.sideBar}>
-      <div className={styles.headerLogo}>
-            <Link to='/'><img className={styles.logo} alt='duefocus' src={logo}/></Link>
-      </div>
+        <div className={styles.headerLogo}>
+              <Link to='/'><img className={styles.logo} alt='duefocus' src={logo}/></Link>
+        </div>
         <Link className={styles.sideBarElement} to="/onboarding/">
           <div>
             <img src={icon} alt="icon"/>
             <span>Onboarding</span>
+          </div>
+        </Link>
+        <Link className={styles.sideBarElement} to="/dashboard/restaurants/">
+          <div>
+            <i class="fas fa-utensils"></i>
+            <span>Restaurants</span>
           </div>
         </Link>
       </div>

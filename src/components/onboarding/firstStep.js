@@ -106,7 +106,6 @@ const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, re
               </div>
           </div>
         </div>
-        )
       </>
     )
 }
