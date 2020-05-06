@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 
 import logo from "../../style/img/Imgs/dish.svg";
 import icon from '../../style/img/blog.svg'
-const NavBar = function ({ }) {
+const NavBar = function () {
   const [email, setEmail] = useState('');
 
   return(
@@ -19,7 +19,7 @@ const NavBar = function ({ }) {
             <span>Onboarding</span>
           </div>
         </Link>
-        <Link className={styles.sideBarElement} to="/dashboard/restaurants/">
+        <Link className={styles.sideBarElement} to="/restaurants/">
           <div>
             <i class="fas fa-utensils"></i>
             <span>Restaurants</span>

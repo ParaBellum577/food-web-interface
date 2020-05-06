@@ -6,13 +6,8 @@ import button from '../buttons.module.scss';
 import { Link } from 'gatsby';
 
 
-import close from '../style/img/Icon_X_gray.svg';
-// import hidePassword from '../style/img/Icon_hide_password.svg';
-// import showPassword from '../style/img/Icon_show_password.svg';
-// import icon from '../style/img/Icon_green.svg';
-// import acceptIcon from '../style/img/accept.svg'
-// import rejectIcon from '../style/img/reject.svg'
 
+import close from '../style/img/Icon_X_gray.svg';
 import cup from '../style/img/Imgs/cup.svg';
 import restaurantIcon from '../style/img/Imgs/restaurant.svg';
 import fastFood from '../style/img/Imgs/fast-food.svg';
@@ -20,7 +15,6 @@ import fastFood from '../style/img/Imgs/fast-food.svg';
 const actions = { setUserInfo };
 
 const SecondStep = function({ handleChangeStep,user, setUserInfo, iconCheck, userSettings }) {
-  // const [step, setNextStep] = useState(1);
   const [password, setPassword] = useState('');
   const [organizationName, setOrganizationName] = useState('');
   const [name, setName] = useState('');
@@ -56,7 +50,7 @@ const SecondStep = function({ handleChangeStep,user, setUserInfo, iconCheck, use
     setUserInfo(data);
     localStorage.setItem('user', JSON.stringify(data));
     localStorage.setItem('userConfirmed', true);
-    window.location.href = '/dashboard';
+    window.location.href = '/restaurants';
   }
 
   return(

@@ -11,17 +11,6 @@ const mapStateToProps = ({ user, dashboard }) => ({
 
 const Dashboard = function({ user, children }) {
   const [isLoading, setIsLoading] = useState(false);
-  const isConfirmed = localStorage.getItem('userConfirmed');
-  console.log("Dashboard -> isConfirmed", isConfirmed)
-
-  // useEffect(() => {
-  //   if(isConfirmed === 'true' && window.location.href !== '/dashboard/restaurants/') {
-  //     window.location.href = '/dashboard/restaurants/'
-  //   } else (
-  //     window.location.href = '/onboarding/'
-  //   )
-  // }, [isConfirmed]);
-
   return(
       <>
       <SideBar />
