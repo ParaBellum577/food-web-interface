@@ -21,7 +21,7 @@ const NavBar = function () {
         </Link>
         <Link className={styles.sideBarElement} to="/restaurants/">
           <div>
-            <i class="fas fa-utensils"></i>
+            <i className="fas fa-utensils"></i>
             <span>Restaurants</span>
           </div>
         </Link>

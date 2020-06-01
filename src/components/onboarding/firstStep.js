@@ -8,7 +8,7 @@ import button from '../buttons.module.scss';
 
 import acceptIcon from '../style/img/accept.svg'
 import rejectIcon from '../style/img/reject.svg'
-
+import img from '../style/img/20317591.jpg'
 
 const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, restaurant }) {
   const [email, setEmail] = useState('');
@@ -54,6 +54,7 @@ const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, re
           <div id='modal-sign-up' className={styles.modal}>
           <div className={styles.modalLeft}>
               <div className={styles.imgIntegrations}>
+                <img src={img} alt="img"/>
               </div>
               <div className={styles.list}>
                       <div><span>Зроби крок до їжі</span></div>

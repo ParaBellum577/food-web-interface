@@ -12,11 +12,11 @@ const App = () => {
   const isConfirmed = JSON.parse(localStorage.getItem('userConfirmed'));
   console.log("Dashboard -> isConfirmed", isConfirmed)
 
-  useEffect(() => {
-    if(!isConfirmed) {
-      window.location = '/onboarding/'
-    }
-  }, [isConfirmed]);
+  // useEffect(() => {
+  //   if(!isConfirmed) {
+  //     window.location = '/onboarding/'
+  //   }
+  // }, [isConfirmed]);
 
   return (
       <Router>

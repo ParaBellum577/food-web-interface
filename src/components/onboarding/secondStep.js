@@ -11,7 +11,7 @@ import close from '../style/img/Icon_X_gray.svg';
 import cup from '../style/img/Imgs/cup.svg';
 import restaurantIcon from '../style/img/Imgs/restaurant.svg';
 import fastFood from '../style/img/Imgs/fast-food.svg';
-
+import img from '../style/img/20317591.jpg'
 const actions = { setUserInfo };
 
 const SecondStep = function({ handleChangeStep,user, setUserInfo, iconCheck, userSettings }) {
@@ -43,8 +43,7 @@ const SecondStep = function({ handleChangeStep,user, setUserInfo, iconCheck, use
     name: name,
     email: userSettings.email,
     password: password,
-    organization: organization,
-    organizationName: organizationName,
+    organization: [{ type: organization, orgName: organizationName }],
     isOwner: userSettings.isOwner,
   }
     setUserInfo(data);
@@ -58,6 +57,7 @@ const SecondStep = function({ handleChangeStep,user, setUserInfo, iconCheck, use
       <div id='modal-sign-up' className={styles.modal}>
         <div className={styles.modalLeft}>
             <div className={styles.imgIntegrations}>
+              <img src={img} alt="img"/>
             </div>
             <div className={styles.list}>
                     <div><span>Зроби крок до їжі</span></div>

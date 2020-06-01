@@ -618,8 +618,8 @@ pre tt:after {
   margin: 34px 28px 20px;
   position: relative;
   height: inherit;
-  border: 1px solid #dde1e7;
-  background: #fff;
+  /* border: 1px solid #dde1e7;
+  background: #fff; */
 }
 
 @media only screen and (max-width: 480px) {
