@@ -75,7 +75,7 @@ const SecondStep = function({ handleChangeStep,user, setUserInfo, iconCheck, use
                     <span>Имя</span>
                     <input
                       autoFocus
-                      maxLength='76'
+                      maxLength='42'
                       id='correct-mail'
                       value={name}
                       onChange={handleSetName}

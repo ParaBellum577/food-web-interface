@@ -1,13 +1,6 @@
 import React,{ useEffect, useState, memo } from 'react';
 import Login from './login'
-// import { UncontrolledPopover, PopoverBody } from 'reactstrap';
 import styles from './index.module.scss';
-// import close from '../style/img/Icon_X_gray.svg';
-// import hidePassword from '../style/img/Icon_hide_password.svg';
-// import showPassword from '../style/img/Icon_show_password.svg';
-
-// import acceptIcon from '../style/img/accept.svg'
-// import rejectIcon from '../style/img/reject.svg'
 
 
 const LoginPage = function ({ handleChangeStep, addUserData, iconCheck, dish, restaurant }) {

@@ -613,6 +613,9 @@ pre tt:after {
   background: #f2f4f7;
   padding: 0 0 0 220px;
   transition: all 0.4s ease;
+  background-image: url(./style/img/back.jpg);
+  background-color: rgba(255,255,255,0.93);
+  background-blend-mode: lighten;
 }
 .wrapper {
   margin: 34px 28px 20px;
@@ -620,6 +623,13 @@ pre tt:after {
   height: inherit;
   /* border: 1px solid #dde1e7;
   background: #fff; */
+}
+.error-message {
+  color: #ed1d41;
+  font-size: 12px;
+}
+.error-input {
+  border: 1px solid #ed1d41 !important;
 }
 
 @media only screen and (max-width: 480px) {

@@ -1,49 +1,47 @@
 import React,{ useEffect, useState, memo } from 'react';
 import { UncontrolledPopover, PopoverBody, PopoverHeader } from 'reactstrap';
-
-// import { UncontrolledPopover, PopoverBody } from 'reactstrap';
+import validator from 'validator';
 import styles from './index.module.scss';
 import button from '../../buttons.module.scss';
-// import close from '../style/img/Icon_X_gray.svg';
-// import hidePassword from '../style/img/Icon_hide_password.svg';
-// import showPassword from '../style/img/Icon_show_password.svg';
 
 import acceptIcon from '../../style/img/accept.svg'
 import rejectIcon from '../../style/img/reject.svg'
 import hidePassword from '../../style/img/Icon_hide_password.svg';
 import showPasswordicon from '../../style/img/Icon_show_password.svg';
+import img from '../../style/img/20317591.jpg'
 
-const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, restaurant }) {
+const Login = function () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const [isFormValid, setIsFormValid] = useState(false);
+  const [isEmailValid, setEmailValid] = useState(false);
+  const [isCorrectPassword, setIsPSWcorrect] = useState(true);
+
 
   const handleUserEmail = (e) => {
     setEmail(e.target.value);
+    if (!validator.isEmail(e.target.value)) {
+      setIsFormValid(false);
+      setEmailValid(false);
+    } else {
+      setIsFormValid(true);
+      setEmailValid(true);
+    }
   }
+
   const handleUserPassword = (e) => {
     setPassword(e.target.value);
   }
 
-//   const validation = () => {
-//     if((isOwner === true || isOwner === false) && email !== '') {
-//       setIsFormValid(true);
-//     } else {
-//       setIsFormValid(false);
-//     }
-//   }
-
-//   useEffect(() => {
-//     validation();
-//   }, [email, isOwner]);
-
   const accept = (
     <img src={acceptIcon} alt="accept"/>
-  )
+  );
+
   const reject = (
     <img src={rejectIcon} alt="reject"/>
-  )
+  );
+
   const showPassword = () => {
     const pass = document.getElementById('psw');
     if (pass.type === 'text') {
@@ -53,14 +51,16 @@ const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, re
       pass.type = 'text'
       document.getElementById('eye').src = hidePassword;
     }
-  }
+  };
+  
   return(
       <>
     <div id='modal-sign-up' className={styles.modal}>
         <div className={styles.modalLeft}>
+          <img src={img} alt="img"/>
         </div>
         <div className={styles.modalRight}>
-        <div className={styles.closeModal}><img src="" alt="close"/><span>ESC</span></div>
+        {/* <div className={styles.closeModal}><span>ESC</span></div> */}
             <div>
               <h4>Login</h4>
               {/* <span onClick={goToDashboard} className={styles.haveAccount}>Already have an Account? Sign In</span> */}
@@ -71,17 +71,18 @@ const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, re
                     <input
                       autoFocus
                       maxLength='76'
-                      id='correct-mail'
+                      className={(isEmailValid || email === '') ? '' : 'error-input'}
                       value={email}
                       onChange={handleUserEmail}
                       type="email"
                       name="email"
                       placeholder='name@email.com'
                     />
-                   <div className={styles.errorBlock}>
-                   <span className={styles.errors} id='email-error-message'>It doesn't looks like an e-mail</span>
-                   <span className={styles.errors} id='login-exists-message'>This email is already registered</span>
-                   </div>
+                   { (!isEmailValid && email !== '') &&
+                      <div className={styles.errorBlock}>
+                        <span className={styles.errors} className="error-message">Це не схоже на електронну пошту</span>
+                      </div>
+                    }
                   </div>
 
                   <div className={styles.formGroup}>
@@ -113,9 +114,12 @@ const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, re
                       className={styles.hidePsw}
                       alt="eye"
                     />
-                    <div className={styles.errorBlock}>
-                    <span className={styles.errors} id='password-error-message'>Please select a strong password</span>
-                    </div>
+                    {
+                      !isCorrectPassword &&
+                        <div className={styles.errorBlock}>
+                           <span className={styles.errors} className="error-message">Не верный пароль, попробуйте еще раз...</span>
+                        </div>
+                    }
                   </div>
 
                     {/* <div
@@ -140,28 +144,6 @@ const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, re
                     </button>
 
                </form>
-                {/* <div className={styles.line}><div /><span className={styles.text}>Or Sign Up With</span></div> */}
-                <div className={styles.trackers}>
-              </div>
-              <div className={styles.signInWsGoogle}>
-              {/* <div className={styles.trackers}>
-                <div onClick={() => GASignUpTrello()}>
-                  <a title='Redirect DueFocus Time Tracker Trello' href="https://web.duefocus.com/redirect_oauth/TRELLO" target="_blank" rel="noopener noreferrer">
-                    <img src={img4} alt='Trello' />
-                  </a>
-                </div>
-                <div onClick={() => GASignUpGitHub()}>
-                  <a title='Redirect DueFocus Time Tracking App Github' href="https://web.duefocus.com/redirect_oauth/GITHUB" target="_blank" rel="noopener noreferrer">
-                    <img src={img3} alt='Github' />
-                  </a>
-                </div>
-                <div onClick={() => GASignUpGitLab()}>
-                  <a title='Redirect DueFocus Time Tracking Tool Gitlab' href="https://web.duefocus.com/redirect_oauth/GITLAB" target="_blank" rel="noopener noreferrer">
-                    <img src={img1} alt='GitLab' />
-                  </a>
-                </div>
-              </div> */}
-              </div>
             </div>
           </div>
         </div>
@@ -170,4 +152,4 @@ const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, re
     )
 }
 
-export default memo(FirstStep);
+export default memo(Login);

@@ -3,7 +3,9 @@ import Select from 'react-select';
 import { connect } from 'react-redux'
 import styles from './index.module.scss';
 import buttons from '../buttons.module.scss';
+
 import cup from '../style/img/Imgs/cup.svg';
+import pen from '../style/img/pen-solid.svg';
 
 const mapStateToProps = ({ user, dashboard }) => ({
   user,
@@ -12,6 +14,7 @@ const mapStateToProps = ({ user, dashboard }) => ({
 
 const Restaurants = function() {
   const [ifFormVisible, setIsformVisible] = useState(false);
+  const [ifChangeNameVisible, setChangeNameVisible] = useState(false);
   const [selectOption, setOption] = useState(null);
   const [orgNameValue, setOrgNameValue] = useState('');
   const userInfo =  JSON.parse(localStorage.getItem('user'));
@@ -46,6 +49,10 @@ const Restaurants = function() {
     setOrgNameValue(event.target.value);
   };
 
+  const handleEditName = () => {
+    setChangeNameVisible(!ifChangeNameVisible);
+  }
+
   const renderBlocks = () => {
   return (
     userInfo && userInfo.organization.map(org => (
@@ -54,9 +61,15 @@ const Restaurants = function() {
           <div className={styles.organization}>
             <img src={cup} alt="icon"/>
             <div>
-              <h5>{org.orgName}</h5>
+              {
+                ifChangeNameVisible ?
+                <input type="text" />
+                :
+                <h5>{org.orgName}</h5>
+              }
               <span>{org.type}</span>
             </div>
+            <img onClick={handleEditName} className={styles.editButton} src={pen} alt="edit"/>
           </div>
         </div>
       </div>

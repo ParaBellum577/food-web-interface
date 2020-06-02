@@ -1,13 +1,7 @@
-import React,{ useEffect, useState, memo } from 'react';
-// import { UncontrolledPopover, PopoverBody } from 'reactstrap';
+import React,{ useState, memo } from 'react';
+import validator from 'validator';
 import styles from './index.module.scss';
 import button from '../buttons.module.scss';
-// import close from '../style/img/Icon_X_gray.svg';
-// import hidePassword from '../style/img/Icon_hide_password.svg';
-// import showPassword from '../style/img/Icon_show_password.svg';
-
-import acceptIcon from '../style/img/accept.svg'
-import rejectIcon from '../style/img/reject.svg'
 import img from '../style/img/20317591.jpg'
 
 const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, restaurant }) {
@@ -17,6 +11,11 @@ const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, re
 
   const handleUserInput = (e) => {
     setEmail(e.target.value);
+    if (!validator.isEmail(e.target.value)) {
+      setIsFormValid(false);
+    } else {
+      setIsFormValid(true);
+    }
   }
   const handleCheck = (check) => {
     setIsOwner(check);
@@ -29,25 +28,6 @@ const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, re
     });
     handleChangeStep(2);
   }
-
-  const validation = () => {
-    if((isOwner === true || isOwner === false) && email !== '') {
-      setIsFormValid(true);
-    } else {
-      setIsFormValid(false);
-    }
-  }
-
-  useEffect(() => {
-    validation();
-  }, [email, isOwner]);
-
-  const accept = (
-    <img src={acceptIcon} alt="accept"/>
-  )
-  const reject = (
-    <img src={rejectIcon} alt="reject"/>
-  )
 
   return(
       <>
@@ -84,16 +64,13 @@ const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, re
                         autoFocus
                         maxLength='76'
                         id='correct-mail'
+                        className={(isFormValid || email === '') ? '' : 'error-input'}
                         value={email}
                         onChange={handleUserInput}
                         type="email"
                         name="email"
                         placeholder='name@email.com'
                       />
-                     <div className={styles.errorBlock}>
-                     <span className={styles.errors} id='email-error-message'>Це не схоже на електронну пошту</span>
-                     <span className={styles.errors} id='login-exists-message'>This email is already registered</span>
-                     </div>
                     </div>
                       <button
                         disabled={!isFormValid}
@@ -103,6 +80,15 @@ const FirstStep = function ({ handleChangeStep, addUserData, iconCheck, dish, re
                         Далі
                       </button>
                  </form>
+                   {
+                     (!isFormValid && email !== '') &&
+                     (
+                      <div className={styles.errorBlock}>
+                         <span className={styles.errors} className="error-message">Це не схоже на електронну пошту</span>
+                         {/* <span className={styles.errors} className="error-message">This email is already registered</span> */}
+                      </div> 
+                     )
+                   }
                 </div>
               </div>
           </div>
