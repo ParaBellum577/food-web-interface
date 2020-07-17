@@ -1,18 +1,21 @@
 import React,{ useEffect, useState, memo } from 'react';
 import Select from 'react-select';
 import { connect } from 'react-redux'
+import { getUserInfo } from '../../actions/user'
 import styles from './index.module.scss';
 import buttons from '../buttons.module.scss';
 
 import cup from '../style/img/Imgs/cup.svg';
 import pen from '../style/img/pen-solid.svg';
 
+const actions = { getUserInfo };
+
 const mapStateToProps = ({ user, dashboard }) => ({
   user,
   dashboard
 });
 
-const Restaurants = function() {
+const Restaurants = function({ getUserInfo, user }) {
   const [ifFormVisible, setIsformVisible] = useState(false);
   const [ifChangeNameVisible, setChangeNameVisible] = useState(false);
   const [selectOption, setOption] = useState(null);
@@ -50,6 +53,7 @@ const Restaurants = function() {
   };
 
   const handleEditName = () => {
+    getUserInfo();
     setChangeNameVisible(!ifChangeNameVisible);
   }
 
@@ -108,4 +112,4 @@ const Restaurants = function() {
     )
 }
 
-export default memo(connect(mapStateToProps)(Restaurants));
+export default memo(connect(mapStateToProps, actions)(Restaurants));

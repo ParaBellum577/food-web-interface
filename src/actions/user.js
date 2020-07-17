@@ -7,14 +7,13 @@ import { SET_USER_INFO, GET_USER_INFO } from './types';
 export const getUserInfo = () => async dispatch => {
   try {
   const res = await axios({
-        method: 'GET',
-        url: "https://reqres.in/api/users",
-        type: "POST",
-        data: {
-            name: "paul rudd",
-            movies: ["I Love You Man", "Role Models"]
-        },
-  });
+    url: "https://thefork.p.rapidapi.com/sale-type-menu/list?locale=en_US&id_restaurant=522995",
+    method: "GET",
+    headers: {
+		"x-rapidapi-host": "thefork.p.rapidapi.com",
+		"x-rapidapi-key": "cdc4c2db71msh49eb205775ce100p135d57jsndc3018e16b2f",
+  }
+});
   dispatch({ 
       type: GET_USER_INFO, 
       payload: res 
