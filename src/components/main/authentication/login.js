@@ -24,9 +24,11 @@ const Login = function () {
     if (!validator.isEmail(e.target.value)) {
       setIsFormValid(false);
       setEmailValid(false);
+      localStorage.setItem('userLogin', JSON.stringify(false));
     } else {
       setIsFormValid(true);
       setEmailValid(true);
+      localStorage.setItem('userLogin', JSON.stringify(true));
     }
   }
 
@@ -53,6 +55,16 @@ const Login = function () {
     }
   };
   
+  useEffect(() => {
+    const userLogin =  JSON.parse(localStorage.getItem('userLogin'));
+    const userConfirmed =  JSON.parse(localStorage.getItem('userConfirmed'));
+    if(userLogin && userConfirmed) {
+      window.location = '/restaurants/';
+    } else if (userLogin && !userConfirmed) {
+      window.location = '/onboarding/';
+    }
+  }, []);
+
   return(
       <>
     <div id='modal-sign-up' className={styles.modal}>
