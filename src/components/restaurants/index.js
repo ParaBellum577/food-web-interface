@@ -19,6 +19,7 @@ const Restaurants = function({ getUserInfo, user }) {
   const [ifFormVisible, setIsformVisible] = useState(false);
   const [ifChangeNameVisible, setChangeNameVisible] = useState(false);
   const [selectOption, setOption] = useState(null);
+  const [editCommentId, setEditCommentId] = useState(null);
   const [orgNameValue, setOrgNameValue] = useState('');
   const userInfo =  JSON.parse(localStorage.getItem('user'));
   const options = [
@@ -29,8 +30,9 @@ const Restaurants = function({ getUserInfo, user }) {
 
   const handleFormOpen = () => {
     setIsformVisible(!ifFormVisible);
+    const id = JSON.parse(localStorage.getItem('user')).organization.length + 1;
     if(orgNameValue !== '' && selectOption !== null && ifFormVisible) {
-      const newOrg = {type: selectOption.value, orgName: orgNameValue};
+      const newOrg = {type: selectOption.value, orgName: orgNameValue, id};
       const data = {
         name: userInfo.name,
         email: userInfo.userSettings,
@@ -52,7 +54,8 @@ const Restaurants = function({ getUserInfo, user }) {
     setOrgNameValue(event.target.value);
   };
 
-  const handleEditName = () => {
+  const handleEditName = id => {
+    setEditCommentId(id);
     getUserInfo();
     setChangeNameVisible(!ifChangeNameVisible);
   }
@@ -60,20 +63,20 @@ const Restaurants = function({ getUserInfo, user }) {
   const renderBlocks = () => {
   return (
     userInfo && userInfo.organization.map(org => (
-      <div key={org.orgName} className={styles.restaurantBlock}>
+      <div key={org.id} className={styles.restaurantBlock}>
         <div>
           <div className={styles.organization}>
             <img src={cup} alt="icon"/>
             <div>
               {
-                ifChangeNameVisible ?
+                ifChangeNameVisible && editCommentId === org.id ?
                 <input type="text" />
                 :
                 <h5>{org.orgName}</h5>
               }
               <span>{org.type}</span>
             </div>
-            <img onClick={handleEditName} className={styles.editButton} src={pen} alt="edit"/>
+            <img onClick={() => handleEditName(org.id)} className={styles.editButton} src={pen} alt="edit"/>
           </div>
         </div>
       </div>

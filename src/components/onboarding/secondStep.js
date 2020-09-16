@@ -43,7 +43,7 @@ const SecondStep = function({ handleChangeStep,user, setUserInfo, iconCheck, use
     name: name,
     email: userSettings.email,
     password: password,
-    organization: [{ type: organization, orgName: organizationName }],
+    organization: [{ type: organization, orgName: organizationName, id: 1 }],
     isOwner: userSettings.isOwner,
   }
     setUserInfo(data);
